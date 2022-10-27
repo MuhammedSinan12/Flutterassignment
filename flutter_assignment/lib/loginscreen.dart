@@ -43,7 +43,7 @@ class LoginScreen extends StatelessWidget {
             ),
             TextButton(
                 onPressed: () {},
-                child: Text("not a user?Register here!!.SIGNUP"))
+                child: const Text("Don't have an account?SignUp "))
           ],
         ),
       ),

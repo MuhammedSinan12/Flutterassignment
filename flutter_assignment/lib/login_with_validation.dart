@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_assignment/main.dart';
-import 'package:flutter_assignment/signuppage.dart';
+import 'package:flutter_assignment/home.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class LoginWithValidation extends StatelessWidget {
   var formkey = GlobalKey<FormState>();
@@ -35,20 +35,23 @@ class LoginWithValidation extends StatelessWidget {
                       return null;
                     }
                   },
+                  textInputAction: TextInputAction.next,
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: TextFormField(
-                    decoration: const InputDecoration(
-                        labelText: "Password", border: OutlineInputBorder()),
-                    validator: (text) {
-                      if (text!.isEmpty || text.length < 6) {
-                        return "password is less than 6";
-                      } else {
-                        return null;
-                      }
-                    }),
+                  decoration: const InputDecoration(
+                      labelText: "Password", border: OutlineInputBorder()),
+                  validator: (text) {
+                    if (text!.isEmpty || text.length < 6) {
+                      return "password is less than 6";
+                    } else {
+                      return null;
+                    }
+                  },
+                  textInputAction: TextInputAction.next,
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.all(20.0),
@@ -60,9 +63,16 @@ class LoginWithValidation extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => SignupScreen()));
+                                builder: (context) => MainScreen()));
                       } else {
-                        print("Login Failure");
+                        Fluttertoast.showToast(
+                            msg: "Invalid Username/Password",
+                            toastLength: Toast.LENGTH_LONG,
+                            gravity: ToastGravity.CENTER,
+                            timeInSecForIosWeb: 1,
+                            backgroundColor: Colors.red,
+                            textColor: Colors.white,
+                            fontSize: 16.0);
                       }
                     },
                     child: const Text(

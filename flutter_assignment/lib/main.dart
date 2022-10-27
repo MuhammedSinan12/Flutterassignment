@@ -1,9 +1,6 @@
-import 'dart:async';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_assignment/login_with_validation.dart';
 import 'package:flutter_assignment/signuppage.dart';
-import 'package:flutter_assignment/loginscreen.dart';
 
 void main() {
   runApp(MaterialApp(
