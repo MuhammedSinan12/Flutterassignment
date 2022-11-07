@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class Cardui extends StatelessWidget {
+  const Cardui({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
