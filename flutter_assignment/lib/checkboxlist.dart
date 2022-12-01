@@ -42,7 +42,11 @@ class _CheckBoxAssignState extends State<CheckBoxAssign> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("CheckBox Assignment")),
+      appBar: AppBar(
+        title: const Text("CheckBox Assignment"),
+        backgroundColor: Colors.black,
+      ),
+      drawer: const Drawer(),
       body: ListView.builder(
         itemCount: datas.length,
         itemBuilder: (context, index) {
@@ -79,7 +83,8 @@ class _CheckBoxAssignState extends State<CheckBoxAssign> {
 }
 
 void main() {
-  runApp(MaterialApp(
+  runApp(const MaterialApp(
+    debugShowCheckedModeBanner: false,
     home: CheckBoxAssign(),
   ));
 }

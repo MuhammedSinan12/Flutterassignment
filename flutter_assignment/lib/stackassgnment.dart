@@ -1,118 +1,115 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-void main(List<String> args) {
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: StackAssgnmnt(),
-  ));
-}
+class StackProfileUI extends StatelessWidget {
+  const StackProfileUI({super.key});
 
-class StackAssgnmnt extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var screenWidth = MediaQuery.of(context).size.width;
+    var screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text("StackImage"),
-        actions: const [Icon(Icons.favorite_border), Icon(Icons.more_vert)],
+        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.menu_rounded),
+          onPressed: () {},
+        ),
+        title: const Text('Profile'),
+        centerTitle: true,
+        actions: [
+          IconButton(
+              onPressed: () {}, icon: const Icon(Icons.more_vert_rounded))
+        ],
       ),
-      body: GridView(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            crossAxisSpacing: 20,
-            mainAxisSpacing: 10,
-          ),
+      body: SizedBox(
+        height: screenHeight,
+        //color: Colors.deepPurple[100],
+        child: Stack(
           children: [
-            Stack(children: [
-              Container(
-                // width: 300,
-                // height: 300,
-                child: Image.network(
-                    "https://images.unsplash.com/photo-1666468986393-6777f6dc2a16?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2008&q=80"),
+            SizedBox(
+              height: 200,
+              child: Image.network(
+                'https://images.unsplash.com/photo-1554147090-e1221a04a025?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1696&q=80',
+                width: double.infinity,
+                fit: BoxFit.cover,
               ),
-              Positioned(
-                top: 200,
-                left: 20,
-                child: Container(
-                  width: 100,
-                  color: Colors.black87,
-                  padding: const EdgeInsets.all(10),
-                  child: const Text(
-                    "bear",
-                    style: TextStyle(fontSize: 20, color: Colors.white),
+            ),
+            Positioned(
+              top: 130,
+              width: screenWidth,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Container(
+                        height: 60,
+                        width: 60,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50),
+                            color: Colors.redAccent),
+                        child: IconButton(
+                          onPressed: () {},
+                          icon: const Icon(
+                            CupertinoIcons.chat_bubble_text,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                      const CircleAvatar(
+                        backgroundColor: Colors.white,
+                        radius: 72,
+                        child: CircleAvatar(
+                          backgroundColor: Colors.black26,
+                          radius: 70,
+                          backgroundImage: NetworkImage(
+                              'https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80'),
+                        ),
+                      ),
+                      Container(
+                        height: 60,
+                        width: 60,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50),
+                            color: Colors.blue),
+                        child: IconButton(
+                          onPressed: () {},
+                          icon: const Icon(
+                            CupertinoIcons.add,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                ),
-              )
-            ]),
-            Stack(
-              children: [
-                Container(
-                  // width: 300,
-                  // height: 300,
-                  child: Image.network(
-                      "https://images.unsplash.com/photo-1666812272845-c5dcaae45453?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"),
-                ),
-                Positioned(
-                  top: 200,
-                  left: 20,
-                  child: Container(
-                    width: 100,
-                    color: Colors.black87,
-                    padding: const EdgeInsets.all(10),
-                    child: const Text(
-                      "Trees",
-                      style: TextStyle(fontSize: 20, color: Colors.white),
+                  const Padding(
+                    padding: EdgeInsets.only(top: 20, bottom: 5),
+                    child: Text(
+                      'Muhammed Sinan',
+                      style:
+                          TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
                     ),
                   ),
-                )
-              ],
-            ),
-            Stack(
-              children: [
-                Container(
-                  // width: 300,
-                  // height: 300,
-                  child: Image.network(
-                      "https://images.unsplash.com/photo-1666624832822-70a3a0eb4e88?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"),
-                ),
-                Positioned(
-                  top: 200,
-                  left: 20,
-                  child: Container(
-                    width: 100,
-                    color: Colors.black87,
-                    padding: const EdgeInsets.all(10),
-                    child: const Text(
-                      "Tokyo",
-                      style: TextStyle(fontSize: 20, color: Colors.white),
-                    ),
+                  const Text(
+                    'Flutter Developer',
+                    style: TextStyle(fontSize: 16, color: Colors.blueGrey),
                   ),
-                )
-              ],
-            ),
-            Stack(
-              children: [
-                Container(
-                  // width: 300,
-                  // height: 300,
-                  child: Image.network(
-                      "https://images.unsplash.com/photo-1661211221402-efd21ff997c8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=436&q=80"),
-                ),
-                Positioned(
-                  top: 200,
-                  left: 20,
-                  child: Container(
-                    width: 100,
-                    color: Colors.black87,
-                    padding: const EdgeInsets.all(10),
-                    child: const Text(
-                      "Vespa",
-                      style: TextStyle(fontSize: 20, color: Colors.white),
-                    ),
-                  ),
-                )
-              ],
-            ),
-          ]),
+                ],
+              ),
+            )
+          ],
+        ),
+      ),
     );
   }
+}
+
+void main() {
+  runApp(const MaterialApp(
+    home: StackProfileUI(),
+    debugShowCheckedModeBanner: false,
+  ));
 }

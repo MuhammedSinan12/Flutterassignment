@@ -1,33 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/container.dart';
+import 'package:flutter/src/widgets/framework.dart';
+
+class ListViewWithBuilder extends StatelessWidget {
+  const ListViewWithBuilder({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    List<String> id = ['1', '2', '3', '4'];
+    List<int> codes = [100, 200, 300, 700];
+
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('List View Builder'),
+      ),
+      body: ListView.builder(
+          itemCount: id.length,
+          itemBuilder: (context, index) {
+            return Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: Container(
+                height: 40,
+                color: Colors.green[codes[index]],
+                child: Center(
+                  child: Text(id[index]),
+                ),
+              ),
+            );
+          }),
+    );
+  }
+}
 
 void main() {
   runApp(MaterialApp(
     home: ListViewWithBuilder(),
   ));
-}
-
-class ListViewWithBuilder extends StatelessWidget {
-  var datas = <String>["Data1", "Data2", "Data3"];
-  var colors = <int>[600, 500, 200];
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("List1"),
-      ),
-      body: ListView.builder(itemBuilder: (BuildContext cntx, int index) {
-        return Card(
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
-          child: Container(
-            height: 50,
-            color: Colors.amber[colors[index]],
-            child: Center(
-              child: Text(datas[index]),
-            ),
-          ),
-        );
-      }),
-    );
-  }
 }
